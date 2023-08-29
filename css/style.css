@@ -10,7 +10,7 @@ body {
 }
 
 .layout_padding2 {
-  padding: 75px 0;
+  padding: 20px 0;
 }
 
 .layout_padding2-top {
@@ -253,6 +253,7 @@ a:focus {
       -ms-flex-align: center;
           align-items: center;
   position: relative;
+  background-color:  rgba(0, 0, 0, 0.25);;
 }
 
 .slider_section .row {
@@ -272,8 +273,9 @@ a:focus {
 
 .slider_section .detail-box h1 {
   font-weight: bold;
-  text-transform: uppercase;
   margin-bottom: 0;
+  font-size: 70px;
+
 }
 
 .slider_section .detail-box p {
@@ -296,7 +298,7 @@ a:focus {
 .slider_section .detail-box .btn-box .btn1 {
   display: inline-block;
   padding: 10px 15px;
-  background-color: #19c880;
+  background-color: #70B1FF;
   color: #ffffff;
   border-radius: 0;
   -webkit-transition: all 0.3s;
@@ -311,7 +313,7 @@ a:focus {
 .slider_section .detail-box .btn-box .btn2 {
   display: inline-block;
   padding: 10px 15px;
-  background-color: #8019c8;
+  background-color: #19c880;
   color: #ffffff;
   border-radius: 0;
   -webkit-transition: all 0.3s;
@@ -372,6 +374,10 @@ a:focus {
 
 .slider_bg_box img {
   height: 100%;
+}
+
+.slider_bg_box .bg-image{
+  opactiy: 0.5;
 }
 
 .service_section {
