@@ -466,7 +466,9 @@ a:focus {
 }
 
 .home_aboutimg {
-  width: 100%;
+  width: 70%;
+  margin-left: 25%;
+  margin-right: auto;
 }
 
 .about_section .img_container .img-box {
@@ -519,6 +521,15 @@ a:focus {
           flex: 1;
   padding-left: 3%;
   padding-right: 10%;
+}
+
+.about_section .detail-box2 {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding-left: 3%;
+  padding-right: 10%;
+  margin-bottom:20%;
 }
 
 .about_section .detail-box h2 {
