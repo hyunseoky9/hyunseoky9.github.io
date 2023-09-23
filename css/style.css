@@ -987,4 +987,10 @@ a:focus {
   margin-right: auto;
 }
 
+.info_contact a {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+
 /*# sourceMappingURL=style.css.map */
