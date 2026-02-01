@@ -378,7 +378,7 @@ a:focus {
 }
 
 .slider_bg_box .bg-image{
-  opactiy: 0.5;
+  opacity: 0.5;
   width:100%;
 }
 
@@ -505,7 +505,7 @@ a:focus {
 .about_section .img_container .img-box.b3 {
   margin-left: 100px;
   max-width: 70%;
-  align: center;
+  text-align: center;
 }
 
 .about_section .img_container .img-box.b2 {
@@ -540,6 +540,96 @@ a:focus {
 
 .about_section .detail-box p {
   margin-top: 35px;
+}
+
+.pub-list {
+  margin-left: 0;
+  padding-left: 1.25rem;
+  list-style-position: outside;
+}
+
+.pub-list li {
+  margin-bottom: 0.9rem;
+  padding-left: 0.25rem;
+}
+
+.pub-gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 0;
+  margin-top: 2.5rem;
+}
+
+.pub-gallery__item {
+  width: 100%;
+  max-width: 374px;
+  transform-origin: center;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 10px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+}
+
+.pub-gallery__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+
+@supports (aspect-ratio: 1) {
+  .pub-gallery__img {
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+}
+
+.pub-gallery__item:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* Subtle “not so straight” styling */
+.pub-gallery__item--shift-left {
+  transform: translateX(-32px);
+}
+
+.pub-gallery__item--shift-right {
+  transform: translateX(32px);
+}
+
+.pub-gallery__item--shift-left-lg {
+  transform: translateX(-54px);
+}
+
+.pub-gallery__item--shift-right-xl {
+  transform: translateX(64px);
+}
+
+/* Keep vertical spacing uniform; only horizontal offsets are used */
+.pub-gallery__item--top,
+.pub-gallery__item--mid,
+.pub-gallery__item--bottom {
+  margin-top: 0;
+}
+
+@media (max-width: 768px) {
+  .pub-gallery {
+    padding-top: 1.5rem;
+  }
+
+  .pub-gallery__item--shift-left,
+  .pub-gallery__item--shift-right,
+  .pub-gallery__item--shift-left-lg,
+  .pub-gallery__item--shift-right-xl,
+  .pub-gallery__item--top,
+  .pub-gallery__item--mid,
+  .pub-gallery__item--bottom {
+    transform: none;
+  }
 }
 
 
@@ -761,6 +851,83 @@ a:focus {
   width: 20px;
   height: 20px;
   background-color: #19c880;
+}
+
+/* Projects carousel side arrows */
+.client_section #customCarousel2 .carousel-control-prev,
+.client_section #customCarousel2 .carousel-control-next {
+  width: 52px;
+  height: 52px;
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.projects_page .client_section #customCarousel2 .carousel-control-prev,
+.projects_page .client_section #customCarousel2 .carousel-control-next {
+  position: fixed;
+  top: 50vh;
+  z-index: 1100;
+}
+
+.projects_page .client_section #customCarousel2 .carousel-control-prev {
+  left: clamp(10px, calc((100vw - 980px) / 2 + 60px), 240px);
+}
+
+.projects_page .client_section #customCarousel2 .carousel-control-next {
+  right: clamp(10px, calc((100vw - 980px) / 2 + 60px), 240px);
+}
+
+.client_section #customCarousel2 .carousel-control-prev:hover,
+.client_section #customCarousel2 .carousel-control-next:hover {
+  background: #ffffff;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.16);
+}
+
+/* Replace default Bootstrap icon sprites with triangle arrows */
+.client_section #customCarousel2 .carousel-control-prev-icon,
+.client_section #customCarousel2 .carousel-control-next-icon {
+  background-image: none;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+.client_section #customCarousel2 .carousel-control-prev-icon {
+  border-right: 14px solid #8019c8;
+  margin-left: -2px;
+}
+
+.client_section #customCarousel2 .carousel-control-next-icon {
+  border-left: 14px solid #8019c8;
+  margin-right: -2px;
+}
+
+@media (max-width: 576px) {
+  .projects_page .client_section #customCarousel2 .carousel-control-prev,
+  .projects_page .client_section #customCarousel2 .carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+  }
+
+  .projects_page .client_section #customCarousel2 .carousel-control-prev {
+    left: 10px;
+  }
+
+  .projects_page .client_section #customCarousel2 .carousel-control-next {
+    right: 10px;
+  }
 }
 
 .contact_section {
