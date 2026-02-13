@@ -79,7 +79,7 @@
               learned from my publications and selected favorite articles to surface the most relevant papers. The list
               prioritizes high-impact and closely aligned work while still including exploratory items to broaden coverage.
             </p>
-            <div class="digest-meta">Journal accessed: 2026-02-12</div>
+            <div class="digest-meta">Journal accessed: <span id="journalAccessDate">Loading...</span></div>
 
             <div class="digest-section">
               <h3 class="digest-section__title">Top 10 picks</h3>
@@ -423,6 +423,35 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
   </script>
   <!-- End Google Map -->
+
+  <script>
+    (function () {
+      var target = document.getElementById("journalAccessDate");
+      if (!target) {
+        return;
+      }
+      if (window.location.protocol === "file:") {
+        target.textContent = "Unavailable (open via a local server)";
+        return;
+      }
+      var url = new URL("journal_digest/journal_access_date.txt", window.location.href);
+      url.searchParams.set("ts", Date.now().toString());
+      fetch(url.toString(), { cache: "no-store" })
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error("Failed to load access date");
+          }
+          return response.text();
+        })
+        .then(function (text) {
+          var dateText = text.trim();
+          target.textContent = dateText || "Unavailable";
+        })
+        .catch(function () {
+          target.textContent = "Unavailable";
+        });
+    })();
+  </script>
 
 </body>
 
