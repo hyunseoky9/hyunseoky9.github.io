@@ -67,6 +67,16 @@
   <section class="about_section layout_padding">
     <div class="container-fluid">
       <div class="row">
+        <!-- Sidebar navigation -->
+        <div class="col-lg-2 d-none d-lg-block digest-sidebar-col">
+          <nav class="digest-sidebar">
+            <ul class="digest-sidebar__list">
+              <li><a href="#top10" class="digest-sidebar__link active">Top 10 picks</a></li>
+              <li><a href="#top30" class="digest-sidebar__link">Top 30 picks</a></li>
+              <li><a href="#exploratory" class="digest-sidebar__link">Exploratory picks</a></li>
+            </ul>
+          </nav>
+        </div>
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="detail-box">
             <h2>
@@ -87,8 +97,9 @@
             <div class="digest-meta">Journal accessed: <span id="journalAccessDate">Loading...</span></div>
 
             <div class="digest-section">
-              <h3 class="digest-section__title">Top 10 picks</h3>
+              <h3 class="digest-section__title digest-toggle" data-toggle="collapse" data-target="#top10" aria-expanded="true" aria-controls="top10">Top 10 picks <span class="digest-toggle__arrow">&#9660;</span></h3>
 
+              <div id="top10" class="collapse show">
               <div class="digest-card">
                 <div class="digest-title"><a href="https://doi.org/10.1016/j.ecolecon.2026.108931" target="_blank" rel="noopener noreferrer">Ambitious forest biodiversity conservation under scarce public funds: Introducing a deferrence mechanism to conservation auctions</a></div>
                 <div class="digest-reason">Conservation auctions with deferred payments directly address budgets/ROI and dynamic timing of investment; leverages land-market mechanisms to prioritize protected area expansion under scarce public funds.</div>
@@ -158,11 +169,13 @@
                 <div class="digest-authors">Louise M. J. O&#39;Connor; Wilfried Thuiller; Ulrich Brose; &#201;l&#233;onore Chenevois; Carla Freund; Benoit Gauzens; Pierre Ga&#252;zere; Catherine Graham; Michael Harfoot; Myriam R. Hirt; S&#233;bastien Lavergne; Luigi Maiorano; Atte Moilanen; Peter H. Verburg; Piero Visconti; Laura J. Pollock</div>
                 <div class="digest-journal">Conservation Letters</div>
               </div>
+              </div>
             </div>
 
             <div class="digest-section">
-              <h3 class="digest-section__title">Top 30 picks</h3>
+              <h3 class="digest-section__title digest-toggle" data-toggle="collapse" data-target="#top30" aria-expanded="true" aria-controls="top30">Top 30 picks <span class="digest-toggle__arrow">&#9660;</span></h3>
 
+              <div id="top30" class="collapse show">
               <div class="digest-card">
                 <div class="digest-title"><a href="https://doi.org/10.1016/j.biocon.2026.111717" target="_blank" rel="noopener noreferrer">A framework for designing multi-objective landscapes for conservation</a></div>
                 <div class="digest-reason">Title indicates multi-objective landscape design for conservation, directly relevant to systematic conservation planning, protected area/landscape prioritization, and explicit trade-offs between biodiversity and ecosystem services; likely aligns with portfolio/efficient frontier thinking and cost-effectiveness across objectives.</div>
@@ -302,11 +315,13 @@
                 <div class="digest-authors">Michael G. Sorice; Kyle Clifton; Klaus Moeltner; Wylie Carr; Nicole Adimey</div>
                 <div class="digest-journal">Conservation Letters</div>
               </div>
+              </div>
             </div>
 
             <div class="digest-section">
-              <h3 class="digest-section__title">Exploratory picks</h3>
+              <h3 class="digest-section__title digest-toggle" data-toggle="collapse" data-target="#exploratory" aria-expanded="true" aria-controls="exploratory">Exploratory picks <span class="digest-toggle__arrow">&#9660;</span></h3>
 
+              <div id="exploratory" class="collapse show">
               <div class="digest-card">
                 <div class="digest-title"><a href="https://doi.org/10.1111/cobi.70094" target="_blank" rel="noopener noreferrer">Using lessons from criminal justice research to improve conservation law enforcement research and practice</a></div>
                 <div class="digest-reason">Applies procedural justice from criminal justice to conservation law enforcement in PAs&#8212;an unexpected but relevant lens for improving compliance, reducing conflict, and addressing environmental justice alongside deterrence.</div>
@@ -354,6 +369,7 @@
                 <div class="digest-reason">Tiered framework for interregional ecosystem service flows from migratory species links qualitative to dynamic models&#8212;guiding when to invest in better data (VOI) vs. action and enabling multi-region, sequential conservation planning.</div>
                 <div class="digest-authors">D. J. Semmens; K. J. Bagstad; J. J. Derbridge; J. E. Diffendorfer; W. E. Thogmartin; B. J. Mattsson; A. Lien; C. C. Chester; J. A. Dubovsky; L. L&#243;pez&#8208;Hoffman</div>
                 <div class="digest-journal">Conservation Biology</div>
+              </div>
               </div>
             </div>
           </div>
@@ -455,6 +471,53 @@
         .catch(function () {
           target.textContent = "Unavailable";
         });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      // Sidebar: smooth scroll, expand collapsed section, and active highlighting
+      var links = document.querySelectorAll('.digest-sidebar__link');
+      var sections = document.querySelectorAll('.digest-section');
+
+      // Click handler: expand target if collapsed, then scroll
+      links.forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          var targetId = this.getAttribute('href').substring(1);
+          var targetEl = document.getElementById(targetId);
+          if (targetEl && !$(targetEl).hasClass('show')) {
+            $(targetEl).collapse('show');
+          }
+          // Wait a tick for collapse animation to start, then scroll
+          setTimeout(function () {
+            var section = targetEl.closest('.digest-section');
+            if (section) {
+              section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }, 50);
+        });
+      });
+
+      // Scroll spy: highlight active sidebar link
+      window.addEventListener('scroll', function () {
+        var scrollPos = window.scrollY + 120;
+        var current = '';
+        sections.forEach(function (section) {
+          if (section.offsetTop <= scrollPos) {
+            var collapseEl = section.querySelector('.collapse');
+            if (collapseEl) {
+              current = collapseEl.id;
+            }
+          }
+        });
+        links.forEach(function (link) {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
     })();
   </script>
 
