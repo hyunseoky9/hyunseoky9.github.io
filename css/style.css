@@ -581,6 +581,17 @@ a:focus {
   margin: 20px 0 10px;
 }
 
+.digest-intro a,
+.digest-intro a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
+  transform: none;
+}
+
 .digest-meta {
   font-size: 12px;
   color: #ffffff;
@@ -623,11 +634,11 @@ a:focus {
   background: none;
   border-radius: 0;
   box-shadow: none;
+  transition: color 0.2s ease;
 }
 
 .digest-title a:hover {
-  text-decoration: underline;
-  background: none;
+  color: #555555;
 }
 
 .digest-reason {
@@ -749,14 +760,35 @@ a:focus {
   box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
 }
 
-.about_section .detail-box .digest-title a,
-.about_section .detail-box .digest-title a:hover {
+.about_section .detail-box .digest-title a {
   background: none;
   box-shadow: none;
   padding: 0;
   border-radius: 0;
   transform: none;
   color: #111111;
+  transition: color 0.2s ease;
+}
+
+.about_section .detail-box .digest-title a:hover {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  transform: none;
+  color: #555555;
+  box-shadow: none;
+}
+
+.about_section .detail-box .digest-intro a,
+.about_section .detail-box .digest-intro a:hover {
+  display: inline;
+  padding: 0;
+  background: none;
+  color: #ffffff;
+  border-radius: 0;
+  box-shadow: none;
+  transform: none;
+  text-decoration: underline;
 }
 
 .product_section {
