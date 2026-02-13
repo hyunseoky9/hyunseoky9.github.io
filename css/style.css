@@ -573,6 +573,81 @@ a:focus {
   padding-left: 0.25rem;
 }
 
+.digest-intro {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #ffffff;
+  margin: 20px 0 10px;
+}
+
+.digest-meta {
+  font-size: 12px;
+  color: #ffffff;
+  margin: 0 0 22px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.digest-section {
+  margin-bottom: 28px;
+}
+
+.digest-section__title {
+  margin: 26px 0 12px;
+  font-size: 24px;
+  letter-spacing: 0.2px;
+  font-weight: 700;
+}
+
+.digest-card {
+  margin: 0 0 14px;
+  padding: 12px 14px;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+}
+
+.digest-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.digest-title a {
+  color: #111111;
+  text-decoration: none;
+  display: inline;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.digest-title a:hover {
+  text-decoration: underline;
+  background: none;
+}
+
+.digest-reason {
+  font-size: 14px;
+  color: #333333;
+  margin: 4px 0 8px;
+}
+
+.digest-authors {
+  font-size: 12px;
+  color: #777777;
+}
+
+.digest-journal {
+  font-size: 12px;
+  color: #666666;
+  font-style: italic;
+  margin-top: 2px;
+}
+
 .pub-gallery {
   display: flex;
   flex-direction: column;
@@ -672,6 +747,16 @@ a:focus {
   background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.about_section .detail-box .digest-title a,
+.about_section .detail-box .digest-title a:hover {
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
+  transform: none;
+  color: #111111;
 }
 
 .product_section {
